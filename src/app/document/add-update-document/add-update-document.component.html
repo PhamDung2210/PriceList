@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add Document Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="documentForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Nghị định số</mat-label>
+            <input formControlName="documentNumber" matInput placeholder="Nhập nghị định">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Ngày ban hành</mat-label>
+            <input formControlName="date" matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cơ quan ban hành</mat-label>
+            <input formControlName="organ" matInput placeholder="Nhập cơ quan">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Diễn giải</mat-label>
+            <input formControlName="explain" matInput placeholder="Nhập diễn giải">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button mat-raised-button color="primary" style="margin-left: 10px;" (click)="addDocument()">{{actionBtn}}</button>
+</div>
