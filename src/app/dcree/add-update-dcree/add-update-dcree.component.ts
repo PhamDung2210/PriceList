@@ -37,15 +37,12 @@ export class AddUpdateDcreeComponent implements OnInit {
   addDcree(){
     if(!this.editData){
       if(this.dcreeForm.valid){
-        this.service.AddDcree(this.dcreeForm.value)
-        .subscribe({
-          next:(res) =>{ 
+        this.service.AddDcree(this.dcreeForm.value).subscribe({
+          next:(res) => { 
+            console.log('Response after adding dcree:', res);
             alert("Dcree added successfully")
             this.dcreeForm.reset();
             this.dialogRef.close('save');
-          },
-          error:()=>{
-            alert("Error while adding the dcree")
           }
         })
       }
@@ -59,13 +56,11 @@ export class AddUpdateDcreeComponent implements OnInit {
     this.service.UpdateDcree(this.dcreeForm.value, this.editData.id)
     .subscribe({
       next: (res) =>{
+        console.log('Response after updating dcree:', res);
         alert("Dcree updated successfully");
         this.dcreeForm.reset();
         this.dialogRef.close('update');
       },
-      error:()=>{
-        alert("Error while updating the dcree")
-      }
     })
   }
 }

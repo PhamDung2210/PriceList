@@ -39,14 +39,12 @@ export class AddUpdateDocumentComponent implements OnInit {
       if(this.documentForm.valid){
         this.service.AddDocument(this.documentForm.value)
         .subscribe({
-          next:(res) =>{ 
+          next:(res) =>{
+            console.log('Response after adding dcree:', res); 
             alert("Document added successfully")
             this.documentForm.reset();
             this.dialogRef.close('save');
           },
-          error:()=>{
-            alert("Error while adding the document")
-          }
         })
       }
     }
@@ -59,6 +57,7 @@ export class AddUpdateDocumentComponent implements OnInit {
     this.service.UpdateDocument(this.documentForm.value, this.editData.id)
     .subscribe({
       next: (res) =>{
+        console.log('Response after updating dcree:', res);
         alert("Document updated successfully");
         this.documentForm.reset();
         this.dialogRef.close('update');
